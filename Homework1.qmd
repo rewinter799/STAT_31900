@@ -1,0 +1,108 @@
+---
+title: "Assignment 1: \n\n Causal Inference Theories and Applications"
+author: "Robert Winter"
+format: pdf
+editor: visual
+
+highlight-style: pygments
+geometry:
+      - top=30mm
+      - left=30mm
+toc: true
+toc-title: Table of Contents
+number-sections: true
+
+# Wrap code chunk text
+include-in-header:
+  text: |
+    \usepackage{fvextra}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+    
+# bibliography: references.bib
+---
+
+# Introduction
+
+# Analysis
+
+## General
+
+## Research Question 1 (Questions 2 – 4)
+
+## Research Question 2 (Questions 5 – 10)
+
+## Bonus Questions
+
+[B1. Derive the two sources of selection bias shown in Holland (1986) (see Week 1 Slide 28).]{.underline}
+
+$$
+\begin{aligned}
+\delta_{PF} - \delta
+& = \big(𝔼[Y|Z=1] - 𝔼[Y|Z=0]\big) - \big(𝔼[Y(1)] - 𝔼[Y(0)]\big) \\
+& = \big(𝔼[Y(1)|Z=1] - 𝔼[Y(0)|Z=0]\big) - \big(𝔼[Y(1)] - 𝔼[Y(0)]\big) \\
+(1) & = 𝔼[Y(1)|Z=1] - 𝔼[Y(0)|Z=0] \\
+& \;\;\;\; - \big(\mathrm{P}(Z=0) \cdot 𝔼[Y(1)|Z=0] + \mathrm{P}(Z=1) \cdot 𝔼[Y(1)|Z=1]\big) \\
+& \;\;\;\; + \big(\mathrm{P}(Z=0) \cdot 𝔼[Y(0)|Z=0] + \mathrm{P}(Z=1) \cdot 𝔼[Y(0)|Z=1]\big) \\
+& = \big(𝔼[Y(1)|Z=1] - \mathrm{P}(Z=1) \cdot 𝔼[Y(1)|Z=1]\big) \\
+& \;\;\;\; + \big(-𝔼[Y(0)|Z=0] + \mathrm{P}(Z=0) \cdot 𝔼[Y(0)|Z=0]\big) \\\
+& \;\;\;\; - \mathrm{P}(Z=0) \cdot 𝔼[Y(1)|Z=0] + \mathrm{P}(Z=1) \cdot 𝔼[Y(0)|Z=1] \\
+& = \big(1 - \mathrm{P}(Z=1)\big) \cdot 𝔼[Y(1)|Z=1] - \big(1 - \mathrm{P}(Z=0)\big) \cdot 𝔼[Y(0)|Z=0] \\
+& \;\;\;\; - \mathrm{P}(Z=0) \cdot 𝔼[Y(1)|Z=0] + \mathrm{P}(Z=1) \cdot 𝔼[Y(0)|Z=1] \\
+& = \mathrm{P}(Z=0) \cdot 𝔼[Y(1)|Z=1] - \mathrm{P}(Z=1) \cdot 𝔼[Y(0)|Z=0] \\
+& \;\;\;\; - \mathrm{P}(Z=0) \cdot 𝔼[Y(1)|Z=0] + \mathrm{P}(Z=1) \cdot 𝔼[Y(0)|Z=1] \\
+& = \mathrm{P}(Z=0) \cdot \big(𝔼[Y(1)|Z=1] - 𝔼[Y(1)|Z=0]\big) \\
+& \;\;\;\; + \mathrm{P}(Z=1) \cdot \big(𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0]\big) \\
+(2) & = \mathrm{P}(Z=0) \cdot \big(𝔼[Y(1)|Z=1] - 𝔼[Y(1)|Z=0]\big) \\
+& \;\;\;\; + \mathrm{P}(Z=1) \cdot \big(𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0]\big) \\
+& \;\;\;\; + \mathrm{P}(Z=0) \cdot \big(𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0]\big) \\
+& \;\;\;\; - \mathrm{P}(Z=0) \cdot \big(𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0]\big) \\
+& = \big(\mathrm{P}(Z=1) + \mathrm{P}(Z=0)\big) \cdot \big(𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0]\big) \\
+& \;\;\;\; + \mathrm{P}(Z=0) \cdot \big(𝔼[Y(1)|Z=1] - 𝔼[Y(1)|Z=0] - 𝔼[Y(0)|Z=1] + 𝔼[Y(0)|Z=0]\big) \\
+(3) & = \big(𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0]\big) \\
+& \;\;\;\; + \mathrm{P}(Z=0) \cdot \big(𝔼[Y(1)-Y(0)|Z=1] - 𝔼[Y(1)-Y(0)|Z=0]\big) \\
+& = \big(𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0]\big) \\
+& \;\;\;\; + \mathrm{P}(Z=0) \cdot \big(𝔼[\Delta|Z=1] - 𝔼[\Delta|Z=0]\big),
+\end{aligned}
+$$
+
+as desired, where (1) is by the Law of Total Expectation, (2) is by adding 0 in a "peculiar" way, and (3) is by linearity of expectation.
+
+[B2. Prove that each of these two sources of bias will become zero under independence.]{.underline}
+
+If $Z$ is independent of $Y(0)$ and $Y(1)$,
+
+$$
+\begin{aligned}
+& (1) \;\;\; 𝔼[Y(0)] = 𝔼[Y(0)|Z=0] = 𝔼[Y(0)|Z=1], \; \mathrm{and} \\
+& (2) \;\;\; 𝔼[Y(1)] = 𝔼[Y(1)|Z=0] = 𝔼[Y(1)|Z=1].
+\end{aligned}
+$$
+
+Subtracting (1) from (2), we also have
+
+$$
+\begin{aligned}
+(3) \;\;\; 𝔼[\Delta] = 𝔼[\Delta|Z=0] = 𝔼[\Delta|Z=1].
+\end{aligned}
+$$
+
+Using (1), our first source of bias (between-group differences in the potential outcome associated with the control condition) is
+
+$$
+\begin{aligned}
+𝔼[Y(0)|Z=1] - 𝔼[Y(0)|Z=0] = 𝔼[Y(0)] - 𝔼[Y(0)] = 0.
+\end{aligned}
+$$
+
+Similarly, using (3), our second source of bias (between-group difference in the treatment effect) is
+
+$$
+\begin{aligned}
+\mathrm{P}(Z=0) \cdot \big(𝔼[\Delta|Z=1] - 𝔼[\Delta|Z=0]\big) = 
+\mathrm{P}(Z=0) \cdot \big(𝔼[\Delta] - 𝔼[\Delta]\big) = 0.
+\end{aligned}
+$$
+
+Thus, both sources of bias become zero under independence of $Z$ and $Y$, as desired.
+
+[B3. Show that when using the *prima facie* causal effect to evaluate the average treatment effect on the treated (ATT), only the first source of bias possibly exists.]{.underline}
